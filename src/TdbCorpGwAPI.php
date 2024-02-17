@@ -102,10 +102,10 @@ class TdbCorpGwAPI extends TseGuzzle
      * 
      * @return TransferDomesticResDto
      */
-    public function bankTransfer(BankTransferReqDto $dto, $options = []): BankTransferResDocument
+    public function bankTransfer(BankTransferReqDto $dto, TxnCode $txnCode, $options = []): BankTransferResDocument
     {
         $reqDocument = new BankTransferReqDocument();
-        $reqDocument->header = $this->getGroupHeader(TxnCode::T1001, $options);
+        $reqDocument->header = $this->getGroupHeader($txnCode, $options);
         $reqDocument->info = $dto;
 
         $response = $this->callAPI($reqDocument->serialize('xml'));
