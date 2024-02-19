@@ -11,9 +11,6 @@ class BankTransferResDocument extends TseDTO
     #[SerializedPath('[GrpHdr]')]
     public ?GroupHeaderRes $header = null;
 
-    /**
-     * @var array<BankTransferResDto>
-     */
     #[SerializedPath('[OrgnlPmtInfAndSts]')]
-    public mixed $response;
+    public ?BankTransferResDto $response;
 }
