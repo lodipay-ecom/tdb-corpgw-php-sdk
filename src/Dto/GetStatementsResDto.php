@@ -91,5 +91,5 @@ class GetStatementsResDto extends TseDTO
      * Example: 4/2/2021 6:24:40 PM
      */
     #[SerializedPath('[TxPostDate]')]
-    public string $TxPostDate;
+    public string $txPostDate;
 }
