@@ -22,6 +22,13 @@ class GetStatementsResDto extends TseDTO
     public float $amount;
 
     /**
+     * Дансны валют
+     * Example: MNT
+     */
+    #[SerializedPath('[Ccy]')]
+    public string $currency;
+
+    /**
      * Гүйлгээ хийсэн ханш
      * Example: 1
      */

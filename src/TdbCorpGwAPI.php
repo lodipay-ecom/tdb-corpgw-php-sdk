@@ -98,7 +98,7 @@ class TdbCorpGwAPI extends TseGuzzle
     }
 
     /**
-     * Domestic transfer
+     * Bank transfer
      * 
      * @return TransferDomesticResDto
      */

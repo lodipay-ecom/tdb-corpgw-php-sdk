@@ -16,7 +16,7 @@ class BankTransferReqDto extends TseDTO
     public int $numberOfTxs;
 
     /**
-     * Дансны валют
+     * Гүйлгээний нийлбэр дүн. Валют хамаарахгүй. Ж нь: 500USD, 100EUR гэвэл 600 байна.
      * Example: 1,000
      */
     #[SerializedPath('[CtrlSum]')]
