@@ -9,8 +9,8 @@ use Tsetsee\DTO\DTO\TseDTO;
 class BankTransferResDocument extends TseDTO
 {
     #[SerializedPath('[GrpHdr]')]
-    public ?GroupHeaderRes $header = null;
+    public GroupHeaderRes $header = null;
 
     #[SerializedPath('[OrgnlPmtInfAndSts]')]
-    public ?BankTransferResDto $response;
+    public BankTransferResDto $response;
 }

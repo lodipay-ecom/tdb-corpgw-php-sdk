@@ -87,7 +87,7 @@ class BankTransferReqDto extends TseDTO
 
     /**
      * Хүлээн авах банкны код- банк хооронд бол заавал явуулна
-     * Example: MNT
+     * Example: TDBM
      */
     #[SerializedPath('[CdtTrfTxInf][CdtrAgt][FinInstnId][BICFI]')]
     public string $bicfi;

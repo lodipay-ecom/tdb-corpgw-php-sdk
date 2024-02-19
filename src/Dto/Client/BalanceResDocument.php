@@ -9,8 +9,8 @@ use Symfony\Component\Serializer\Attribute\SerializedPath;
 class BalanceResDocument extends TseDTO
 {
     #[SerializedPath('[GrpHdr]')]
-    public ?GroupHeaderRes $header = null;
+    public GroupHeaderRes $header = null;
 
     #[SerializedPath('[EnqRsp]')]
-    public ?GetBalanceResDto $response = null;
+    public GetBalanceResDto $response = null;
 }

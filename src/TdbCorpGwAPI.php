@@ -74,7 +74,7 @@ class TdbCorpGwAPI extends TseGuzzle
     /**
      * Get balance of an account
      */
-    public function getBalance(GetBalanceReqDto $dto, array $options = []): ?BalanceResDocument
+    public function getBalance(GetBalanceReqDto $dto, array $options = []): BalanceResDocument
     {
         $reqDocument = new BalanceReqDocument();
         $reqDocument->header = $this->getGroupHeader(TxnCode::T5003, $options);
