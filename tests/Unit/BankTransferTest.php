@@ -4,6 +4,7 @@ use GuzzleHttp\Handler\MockHandler;
 use GuzzleHttp\HandlerStack;
 use GuzzleHttp\Psr7\Response;
 use Lodipay\TdbCorpGwSDK\Dto\BankTransferReqDto;
+use Lodipay\TdbCorpGwSDK\Enum\TxnCode;
 use Lodipay\TdbCorpGwSDK\TdbCorpGwAPI;
 
 function getTransferDomesticMockHandler()
@@ -105,9 +106,9 @@ it('should transfer fund to domestic account successfully', function () {
         'instructedAmount' => 1000.00,
         'creditorCurrency' => 'MNT',
         'txInfo' => 'Банк доторх гүйлгээ',
-    ]));
+    ]), TxnCode::T1001);
 
-    expect($response)->response->TxInfAndSts->Rst->JrNo->toBe('405000984778090');
+    expect($response)->response->statusId->toBe('0');
 });
 
 it('should transfer fund to interbank account successfully', function () {
@@ -130,7 +131,6 @@ it('should transfer fund to interbank account successfully', function () {
         'creditorCurrency' => 'MNT',
         'bicfi' => 'TDBM',
         'txInfo' => 'Банк хоорондын гүйлгээ',
-    ]));
-
-    expect($response)->response->TxInfAndSts->Rst->JrNo->toBe('405000984778091');
+    ]), TxnCode::T1002);
+    expect($response)->response->journalNo->toBe('405000984778091');
 });
