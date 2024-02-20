@@ -9,7 +9,7 @@ use Tsetsee\DTO\DTO\TseDTO;
 class StatementResDocument extends TseDTO
 {
     #[SerializedPath('[GrpHdr]')]
-    public GroupHeaderRes $header = null;
+    public GroupHeaderRes $header;
 
     /**
      * @var array<GetStatementsResDto>
