@@ -80,7 +80,7 @@ class TdbCorpGwAPI extends TseGuzzle
         $reqDocument->header = $this->getGroupHeader(TxnCode::T5003, $options);
         $reqDocument->info = $dto;
 
-        $response = $this->callAPI($reqDocument->serialize('xml'));
+        $response = $this->callAPI($reqDocument->serialize('xml', ['xml_root_node_name' => 'Document']));
         return BalanceResDocument::from($response, 'xml');
     }
 
@@ -93,7 +93,7 @@ class TdbCorpGwAPI extends TseGuzzle
         $reqDocument->header = $this->getGroupHeader(TxnCode::T5004, $options);
         $reqDocument->info = $dto;
 
-        $response = $this->callAPI($reqDocument->serialize('xml'));
+        $response = $this->callAPI($reqDocument->serialize('xml', ['xml_root_node_name' => 'Document']));
         return StatementResDocument::from($response, 'xml');
     }
 
@@ -108,7 +108,7 @@ class TdbCorpGwAPI extends TseGuzzle
         $reqDocument->header = $this->getGroupHeader($txnCode, $options);
         $reqDocument->info = $dto;
 
-        $response = $this->callAPI($reqDocument->serialize('xml'));
+        $response = $this->callAPI($reqDocument->serialize('xml', ['xml_root_node_name' => 'Document']));
         return BankTransferResDocument::from($response, 'xml');
     }
 
