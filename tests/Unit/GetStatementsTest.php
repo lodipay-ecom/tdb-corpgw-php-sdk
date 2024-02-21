@@ -13,8 +13,8 @@ function getStatementsMockHandler()
         <?xml version="1.0" encoding="utf-8"?>
         <Document>
             <GrpHdr>
-                <MsgId>[TRACEweN-цуэ№O12231]630</MsgId>
-                <CreDtTm>5/3/2021 11:16:52 AM</CreDtTm>
+                <MsgId>2234234233123</MsgId>
+                <CreDtTm>2/3/2024 11:16:52 AM</CreDtTm>
                 <TxsCd>5004</TxsCd>
                 <InitgPty>
                     <Id>
@@ -33,7 +33,7 @@ function getStatementsMockHandler()
                     <TxRt>1</TxRt>
                     <TxDt>2021-03-31</TxDt>
                     <TxTime>18:24</TxTime>
-                    <TxPostDate>4/2/2021 6:24:40 PM</TxPostDate>
+                    <TxPostDate>4/2/2024 6:24:40 PM</TxPostDate>
                     <CtAcct>4884961170000001</CtAcct>
                     <TxAddInf>EB -3000K1 : 400-(400012007-ТЕСТ ТЕСТЛ)-&amp;gt; 010000-Төв
                     Монголбанк(5021534104-test)</TxAddInf>
@@ -47,7 +47,7 @@ function getStatementsMockHandler()
                     <TxRt>1</TxRt>
                     <TxDt>2021-03-31</TxDt>
                     <TxTime>18:24</TxTime>
-                    <TxPostDate>4/2/2021 6:24:40 PM</TxPostDate>
+                    <TxPostDate>4/2/2024 6:24:40 PM</TxPostDate>
                     <CtAcct>470802</CtAcct>
                     <TxAddInf>EB-БАНК ХООРОНД ШИЛЖҮҮЛГИЙН ШИМТГЭЛ 3.3</TxAddInf>
                     <CtAcntOrg>5021534104</CtAcntOrg>
@@ -73,5 +73,5 @@ it('should return statements of a user account', function () {
         'toDate' => '2024-02-30'
     ]));
 
-    expect($response->response)->toHaveCount(2);
+    expect($response)->toHaveCount(2);
 });

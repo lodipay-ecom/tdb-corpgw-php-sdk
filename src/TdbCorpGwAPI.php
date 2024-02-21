@@ -6,12 +6,15 @@ use Lodipay\TdbCorpGwSDK\Dto\Client\BalanceReqDocument;
 use Lodipay\TdbCorpGwSDK\Dto\Client\BalanceResDocument;
 use Lodipay\TdbCorpGwSDK\Dto\GetBalanceReqDto;
 use Lodipay\TdbCorpGwSDK\Dto\GetStatementsReqDto;
+use Lodipay\TdbCorpGwSDK\Dto\GetStatementsResDto;
 use Lodipay\TdbCorpGwSDK\Dto\Client\GroupHeaderReq;
 use Lodipay\TdbCorpGwSDK\Dto\Client\StatementReqDocument;
 use Lodipay\TdbCorpGwSDK\Dto\Client\StatementResDocument;
 use Lodipay\TdbCorpGwSDK\Dto\Client\BankTransferReqDocument;
 use Lodipay\TdbCorpGwSDK\Dto\BankTransferReqDto;
+use Lodipay\TdbCorpGwSDK\Dto\BankTransferResDto;
 use Lodipay\TdbCorpGwSDK\Dto\Client\BankTransferResDocument;
+use Lodipay\TdbCorpGwSDK\Dto\GetBalanceResDto;
 use Lodipay\TdbCorpGwSDK\Enum\LangCode;
 use Lodipay\TdbCorpGwSDK\Enum\PasswordType;
 use Lodipay\TdbCorpGwSDK\Enum\TxnCode;
@@ -75,16 +78,20 @@ class TdbCorpGwAPI extends TseGuzzle
     /**
      * Get balance of an account
      */
-    public function getBalance(GetBalanceReqDto $dto, array $options = []): BalanceResDocument
+    public function getBalance(GetBalanceReqDto $reqDto, array $options = []): ?GetBalanceResDto
     {
         $reqDocument = new BalanceReqDocument();
         $reqDocument->header = $this->getGroupHeader(TxnCode::T5003, $options);
-        $reqDocument->info = $dto;
+        $reqDocument->info = $reqDto;
 
+        $responseDto = null;
         $response = $this->callAPI($reqDocument->serialize('xml', ['xml_root_node_name' => 'Document']));
-        $responseDto = BalanceResDocument::from($response, 'xml');
-        if ($responseDto->header->responseCode !== 10) {
-            throw new CorpGwException($responseDto->header->responseDesc);
+        $responseDocument = BalanceResDocument::from($response, 'xml');
+
+        if ($responseDocument->header->responseCode !== 10) {
+            throw new CorpGwException($responseDocument->header->responseDesc);
+        } else {
+            $responseDto = $responseDocument->response;
         }
 
         return $responseDto;
@@ -92,17 +99,23 @@ class TdbCorpGwAPI extends TseGuzzle
 
     /**
      * Get statements
+     * 
+     * @return array<GetStatementsResDto>
      */
-    public function getStatements(GetStatementsReqDto $dto, $options = []): StatementResDocument
+    public function getStatements(GetStatementsReqDto $reqDto, $options = []): array
     {
         $reqDocument = new StatementReqDocument();
         $reqDocument->header = $this->getGroupHeader(TxnCode::T5004, $options);
-        $reqDocument->info = $dto;
+        $reqDocument->info = $reqDto;
 
+        $responseDto = null;
         $response = $this->callAPI($reqDocument->serialize('xml', ['xml_root_node_name' => 'Document']));
-        $responseDto = StatementResDocument::from($response, 'xml');
-        if ($responseDto->header->responseCode !== 10) {
-            throw new CorpGwException($responseDto->header->responseDesc);
+
+        $responseDocument = StatementResDocument::from($response, 'xml');
+        if ($responseDocument->header->responseCode !== 10) {
+            throw new CorpGwException($responseDocument->header->responseDesc);
+        } else {
+            $responseDto = $responseDocument->response;
         }
 
         return $responseDto;
@@ -111,18 +124,21 @@ class TdbCorpGwAPI extends TseGuzzle
     /**
      * Bank transfer
      * 
-     * @return TransferDomesticResDto
+     * @return BankTransferResDto|null
      */
-    public function bankTransfer(BankTransferReqDto $dto, TxnCode $txnCode, $options = []): BankTransferResDocument
+    public function bankTransfer(BankTransferReqDto $reqDto, TxnCode $txnCode, $options = []): ?BankTransferResDto
     {
         $reqDocument = new BankTransferReqDocument();
         $reqDocument->header = $this->getGroupHeader($txnCode, $options);
-        $reqDocument->info = $dto;
+        $reqDocument->info = $reqDto;
 
+        $responseDto = null;
         $response = $this->callAPI($reqDocument->serialize('xml', ['xml_root_node_name' => 'Document']));
-        $responseDto = BankTransferResDocument::from($response, 'xml');
-        if ($responseDto->header->responseCode !== 10) {
-            throw new CorpGwException($responseDto->header->responseDesc);
+        $responseDocument = BankTransferResDocument::from($response, 'xml');
+        if ($responseDocument->header->responseCode !== 10) {
+            throw new CorpGwException($responseDocument->header->responseDesc);
+        } else {
+            $responseDto = $responseDocument->response;
         }
 
         return $responseDto;

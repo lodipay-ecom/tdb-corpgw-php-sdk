@@ -108,7 +108,7 @@ it('should transfer fund to domestic account successfully', function () {
         'txInfo' => 'Банк доторх гүйлгээ',
     ]), TxnCode::T1001);
 
-    expect($response)->response->statusId->toBe('0');
+    expect($response)->statusId->toBe('0');
 });
 
 it('should transfer fund to interbank account successfully', function () {
@@ -132,5 +132,5 @@ it('should transfer fund to interbank account successfully', function () {
         'bicfi' => 'TDBM',
         'txInfo' => 'Банк хоорондын гүйлгээ',
     ]), TxnCode::T1002);
-    expect($response)->response->journalNo->toBe('405000984778091');
+    expect($response)->journalNo->toBe('405000984778091');
 });

@@ -47,5 +47,5 @@ it('should return balance of a user account', function () {
         'currency' => 'MNT'
     ]));
 
-    expect($response)->response->balance->toBe(1050000.00);
+    expect($response)->availableBalance->toBe('1050000.00');
 });

@@ -12,5 +12,5 @@ class BalanceResDocument extends TseDTO
     public GroupHeaderRes $header;
 
     #[SerializedPath('[EnqRsp]')]
-    public GetBalanceResDto $response;
+    public ?GetBalanceResDto $response = null;
 }
