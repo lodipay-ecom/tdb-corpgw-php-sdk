@@ -15,6 +15,7 @@ use Lodipay\TdbCorpGwSDK\Dto\Client\BankTransferResDocument;
 use Lodipay\TdbCorpGwSDK\Enum\LangCode;
 use Lodipay\TdbCorpGwSDK\Enum\PasswordType;
 use Lodipay\TdbCorpGwSDK\Enum\TxnCode;
+use Lodipay\TdbCorpGwSDK\Exception\CorpGwException;
 use Tsetsee\TseGuzzle\TseGuzzle;
 
 class TdbCorpGwAPI extends TseGuzzle
@@ -81,7 +82,12 @@ class TdbCorpGwAPI extends TseGuzzle
         $reqDocument->info = $dto;
 
         $response = $this->callAPI($reqDocument->serialize('xml', ['xml_root_node_name' => 'Document']));
-        return BalanceResDocument::from($response, 'xml');
+        $responseDto = BalanceResDocument::from($response, 'xml');
+        if ($responseDto->header->responseCode !== 10) {
+            throw new CorpGwException($responseDto->header->responseDesc);
+        }
+
+        return $responseDto;
     }
 
     /**
@@ -94,7 +100,12 @@ class TdbCorpGwAPI extends TseGuzzle
         $reqDocument->info = $dto;
 
         $response = $this->callAPI($reqDocument->serialize('xml', ['xml_root_node_name' => 'Document']));
-        return StatementResDocument::from($response, 'xml');
+        $responseDto = StatementResDocument::from($response, 'xml');
+        if ($responseDto->header->responseCode !== 10) {
+            throw new CorpGwException($responseDto->header->responseDesc);
+        }
+
+        return $responseDto;
     }
 
     /**
@@ -109,7 +120,12 @@ class TdbCorpGwAPI extends TseGuzzle
         $reqDocument->info = $dto;
 
         $response = $this->callAPI($reqDocument->serialize('xml', ['xml_root_node_name' => 'Document']));
-        return BankTransferResDocument::from($response, 'xml');
+        $responseDto = BankTransferResDocument::from($response, 'xml');
+        if ($responseDto->header->responseCode !== 10) {
+            throw new CorpGwException($responseDto->header->responseDesc);
+        }
+
+        return $responseDto;
     }
 
     /**
@@ -131,6 +147,5 @@ class TdbCorpGwAPI extends TseGuzzle
         $uri = $options['uri'] ?? '';
         $response = $this->client->post($uri, $clientOptions);
         return $response->getBody();
-        return simplexml_load_string($response->getBody(), 'SimpleXMLElement', LIBXML_NOCDATA);
     }
 }
