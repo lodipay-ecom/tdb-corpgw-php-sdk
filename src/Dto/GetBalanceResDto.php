@@ -19,12 +19,12 @@ class GetBalanceResDto extends TseDTO
      * Example: 1,050,000.00
      */
     #[SerializedPath('[ABal]')]
-    public float $availableBalance;
+    public string $availableBalance;
 
     /**
      * Үлдэгдэл
      * Example: 100,000.00
      */
     #[SerializedPath('[Bal]')]
-    public float $balance;
+    public string $balance;
 }
