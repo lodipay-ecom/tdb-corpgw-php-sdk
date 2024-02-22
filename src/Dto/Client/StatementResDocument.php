@@ -20,6 +20,6 @@ class StatementResDocument extends TseDTO
      */
     public function getGetStatementsArray(): array
     {
-        return GetStatementsResDto::fromArray($this->response);
+        return \count($this->response) > 0 && is_array($this->response[0]) ? GetStatementsResDto::fromArray($this->response) : GetStatementsResDto::fromArray([$this->response]);
     }
 }
