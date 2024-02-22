@@ -33,7 +33,7 @@ class GetStatementsResDto extends TseDTO
      * Example: 1
      */
     #[SerializedPath('[TxRt]')]
-    private int $txRate;
+    private float $txRate;
 
     /**
      * Гүйлгээ хийгдсэн огноо
@@ -122,7 +122,7 @@ class GetStatementsResDto extends TseDTO
      *
      * @return int
      */
-    public function getTxRate(): int
+    public function getTxRate(): float
     {
         return $this->txRate;
     }
@@ -130,13 +130,13 @@ class GetStatementsResDto extends TseDTO
     /**
      * Set the value of txRate
      *
-     * @param string|int $txRate
+     * @param string|float $txRate
      *
      * @return self
      */
-    public function setTxRate(string|int $txRate): self
+    public function setTxRate(string|float $txRate): self
     {
-        $this->txRate = is_string($txRate) ? (int)$txRate : $txRate;
+        $this->txRate = is_string($txRate) ? (float)$txRate : $txRate;
         return $this;
     }
 
