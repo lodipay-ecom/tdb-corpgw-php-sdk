@@ -13,14 +13,14 @@ class BankTransferReqDto extends TseDTO
      * Example: 1
      */
     #[SerializedPath('[NbOfTxs]')]
-    public int $numberOfTxs;
+    private int $numberOfTxs;
 
     /**
      * Гүйлгээний нийлбэр дүн. Валют хамаарахгүй. Ж нь: 500USD, 100EUR гэвэл 600 байна.
      * Example: 1,000
      */
     #[SerializedPath('[CtrlSum]')]
-    public ?float $controlSum;
+    private ?float $controlSum;
 
     /**
      * Аль дүнг чухалчилж үзэх. F-Илгээгч, Т-Хүлээн авагч
@@ -55,14 +55,14 @@ class BankTransferReqDto extends TseDTO
      * Example: MNT
      */
     #[SerializedPath('[CdtTrfTxInf][Amt][InstdAmt]')]
-    public float $instructedAmount;
+    private float $instructedAmount;
 
     /**
      * Гүйлгээний дүн – илгээгч дансын валютаар
      * Example: MNT
      */
     #[SerializedPath('[CdtTrfTxInf][Amt][EqvtAmt]')]
-    public ?float $equivalentAmount;
+    private ?float $equivalentAmount;
 
     /**
      * Хүлээн авагчийн нэр
@@ -98,4 +98,96 @@ class BankTransferReqDto extends TseDTO
      */
     #[SerializedPath('[CdtTrfTxInf][RmtInf][AddtlRmtInf]')]
     public string $txInfo;
+
+    /**
+     * Get the value of numberOfTxs
+     *
+     * @return int
+     */
+    public function getNumberOfTxs(): int
+    {
+        return $this->numberOfTxs;
+    }
+
+    /**
+     * Set the value of numberOfTxs
+     *
+     * @param string|int $numberOfTxs
+     *
+     * @return self
+     */
+    public function setNumberOfTxs(string|int $numberOfTxs): self
+    {
+        $this->numberOfTxs = is_string($numberOfTxs) ? (int)$numberOfTxs : $numberOfTxs;
+        return $this;
+    }
+
+    /**
+     * Get the value of controlSum
+     *
+     * @return ?float
+     */
+    public function getControlSum(): ?float
+    {
+        return $this->controlSum;
+    }
+
+    /**
+     * Set the value of controlSum
+     *
+     * @param string|float $controlSum
+     *
+     * @return self
+     */
+    public function setControlSum(string|float $controlSum): self
+    {
+        $this->controlSum = is_string($controlSum) ? (float)$controlSum : $controlSum;
+        return $this;
+    }
+
+    /**
+     * Get the value of instructedAmount
+     *
+     * @return float
+     */
+    public function getInstructedAmount(): float
+    {
+        return $this->instructedAmount;
+    }
+
+    /**
+     * Set the value of instructedAmount
+     *
+     * @param string|float $instructedAmount
+     *
+     * @return self
+     */
+    public function setInstructedAmount(string|float $instructedAmount): self
+    {
+        $this->instructedAmount = is_string($instructedAmount) ? (float)$instructedAmount : $instructedAmount;
+        return $this;
+    }
+
+    /**
+     * Get the value of equivalentAmount
+     *
+     * @return ?float
+     */
+    public function getEquivalentAmount(): ?float
+    {
+        return $this->equivalentAmount;
+    }
+
+    /**
+     * Set the value of equivalentAmount
+     *
+     * @param string|float $equivalentAmount
+     *
+     * @return self
+     */
+    public function setEquivalentAmount(string|float $equivalentAmount): self
+    {
+        $this->equivalentAmount = is_string($equivalentAmount) ? (float)$equivalentAmount : $equivalentAmount;
+        return $this;
+    }
 }

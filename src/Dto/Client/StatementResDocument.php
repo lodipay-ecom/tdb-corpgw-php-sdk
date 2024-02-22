@@ -11,9 +11,15 @@ class StatementResDocument extends TseDTO
     #[SerializedPath('[GrpHdr]')]
     public GroupHeaderRes $header;
 
-    /**
-     * @var array<GetStatementsResDto>
-     */
+    /** @var array<GetStatementsResDto> $response */
     #[SerializedPath('[EnqRsp][Ntry]')]
-    public mixed $response;
+    public array $response;
+
+    /**
+     * @return GetStatementsResDto[] 
+     */
+    public function getGetStatementsArray(): array
+    {
+        return GetStatementsResDto::fromArray($this->response);
+    }
 }

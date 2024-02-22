@@ -19,7 +19,7 @@ class GetStatementsResDto extends TseDTO
      * Example: 300000
      */
     #[SerializedPath('[Amt]')]
-    public float $amount;
+    private float $amount;
 
     /**
      * Дансны валют
@@ -33,7 +33,7 @@ class GetStatementsResDto extends TseDTO
      * Example: 1
      */
     #[SerializedPath('[TxRt]')]
-    public float $txRate;
+    private int $txRate;
 
     /**
      * Гүйлгээ хийгдсэн огноо
@@ -68,7 +68,7 @@ class GetStatementsResDto extends TseDTO
      * Example: 10000
      */
     #[SerializedPath('[CtBankNo]')]
-    public int $ctBankNo;
+    private int $ctBankNo;
 
     /**
      * Данс эзэмшигчийн нэр
@@ -92,4 +92,74 @@ class GetStatementsResDto extends TseDTO
      */
     #[SerializedPath('[TxPostDate]')]
     public string $txPostDate;
+
+    /**
+     * Get the value of amount
+     *
+     * @return float
+     */
+    public function getAmount(): float
+    {
+        return $this->amount;
+    }
+
+    /**
+     * Set the value of amount
+     *
+     * @param string|float $amount
+     *
+     * @return self
+     */
+    public function setAmount(string|float $amount): self
+    {
+
+        $this->amount = is_string($amount) ? (float)$amount : $amount;
+        return $this;
+    }
+
+    /**
+     * Get the value of txRate
+     *
+     * @return int
+     */
+    public function getTxRate(): int
+    {
+        return $this->txRate;
+    }
+
+    /**
+     * Set the value of txRate
+     *
+     * @param string|int $txRate
+     *
+     * @return self
+     */
+    public function setTxRate(string|int $txRate): self
+    {
+        $this->txRate = is_string($txRate) ? (int)$txRate : $txRate;
+        return $this;
+    }
+
+    /**
+     * Get the value of ctBankNo
+     *
+     * @return int
+     */
+    public function getCtBankNo(): int
+    {
+        return $this->ctBankNo;
+    }
+
+    /**
+     * Set the value of ctBankNo
+     *
+     * @param string|int $ctBankNo
+     *
+     * @return self
+     */
+    public function setCtBankNo(string|int $ctBankNo): self
+    {
+        $this->ctBankNo = is_string($ctBankNo) ? (int)$ctBankNo : $ctBankNo;
+        return $this;
+    }
 }

@@ -115,7 +115,7 @@ class TdbCorpGwAPI extends TseGuzzle
         if ($responseDocument->header->responseCode !== 10) {
             throw new CorpGwException($responseDocument->header->responseDesc);
         } else {
-            $responseDto = $responseDocument->response;
+            $responseDto = $responseDocument->getGetStatementsArray();
         }
 
         return $responseDto;
