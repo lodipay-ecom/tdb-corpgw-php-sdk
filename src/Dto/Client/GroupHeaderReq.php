@@ -31,27 +31,27 @@ class GroupHeaderReq extends GroupHeaderBase
      * Нэвтрэх нууц үгийн төрөл
      * Example: 1
      */
-    #[SerializedPath('[Crdtl][Pwds][PwdType][0]')]
+    #[SerializedPath('[Crdtl][Pwds][0][PwdType]')]
     public int $loginPassType;
 
     /**
      * Нэвтрэх нууц үг
      * Example: test123
      */
-    #[SerializedPath('[Crdtl][Pwds][Pwd][0]')]
+    #[SerializedPath('[Crdtl][Pwds][0][Pwd]')]
     public ?string $loginPass = null;
 
     /**
      * Гүйлгээний нэвтрэх нэр
      * Example: test
      */
-    #[SerializedPath('[Crdtl][Pwds][PwdType][1]')]
+    #[SerializedPath('[Crdtl][Pwds][1][PwdType]')]
     public int $txsPassType;
 
     /**
      * Гүйлгээний нууц үг
      * Example: test123
      */
-    #[SerializedPath('[Crdtl][Pwds][Pwd][1]')]
+    #[SerializedPath('[Crdtl][Pwds][1][Pwd]')]
     public ?string $txsPass = null;
 }
