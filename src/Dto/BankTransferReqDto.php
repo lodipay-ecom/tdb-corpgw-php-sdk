@@ -33,7 +33,7 @@ class BankTransferReqDto extends TseDTO
      * Шилжүүлэгчийн нэр
      * Example: Lodipay LLC
      */
-    #[SerializedPath('[Dbtr]')]
+    #[SerializedPath('[Dbtr][Nm]')]
     public string $debtorName;
 
     /**
@@ -75,14 +75,14 @@ class BankTransferReqDto extends TseDTO
      * Хүлээн авагчийн дансны дугаар
      * Example: MNT
      */
-    #[SerializedPath('[CdtTrfTxInf][Cdtr][Id][IBAN]')]
+    #[SerializedPath('[CdtTrfTxInf][CdtrAcct][Id][IBAN]')]
     public string $creditorIBAN;
 
     /**
      * Хүлээн авагчийн дансны валют
      * Example: MNT
      */
-    #[SerializedPath('[CdtTrfTxInf][Cdtr][Id][Ccy]')]
+    #[SerializedPath('[CdtTrfTxInf][CdtrAcct][Ccy]')]
     public string $creditorCurrency;
 
     /**
