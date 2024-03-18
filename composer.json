@@ -2,6 +2,16 @@
   "name": "lodipay/tdb-corpgw-php-sdk",
   "type": "library",
   "license": "MIT",
+  "authors": [
+        {
+            "name": "Baagii",
+            "email": "badamgarav@lodipay.mn"
+        },
+        {
+            "name": "Tsetsee",
+            "email": "tsetsee.yugi@gmail.com"
+        }
+  ],
   "autoload": {
     "psr-4": {
       "Lodipay\\TdbCorpGwSDK\\": "src/"
