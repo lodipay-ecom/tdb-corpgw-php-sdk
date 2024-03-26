@@ -3,7 +3,7 @@
 namespace Lodipay\TdbCorpGwSDK\Dto\Client;
 
 use Symfony\Component\Serializer\Attribute\SerializedPath;
-use Tsetsee\DTO\DTO\TseDTO;
+use Lodipay\DTO\DTO\TseDTO;
 
 class GroupHeaderBase extends TseDTO
 {

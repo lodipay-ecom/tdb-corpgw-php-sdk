@@ -2,7 +2,7 @@
 
 namespace Lodipay\TdbCorpGwSDK\Dto;
 
-use Tsetsee\DTO\DTO\TseDTO;
+use Lodipay\DTO\DTO\TseDTO;
 use Symfony\Component\Serializer\Attribute\SerializedPath;
 
 class GetBalanceReqDto extends TseDTO

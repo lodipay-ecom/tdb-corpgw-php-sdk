@@ -19,7 +19,7 @@ use Lodipay\TdbCorpGwSDK\Enum\LangCode;
 use Lodipay\TdbCorpGwSDK\Enum\PasswordType;
 use Lodipay\TdbCorpGwSDK\Enum\TxnCode;
 use Lodipay\TdbCorpGwSDK\Exception\CorpGwException;
-use Tsetsee\TseGuzzle\TseGuzzle;
+use Lodipay\TseGuzzle\TseGuzzle;
 
 class TdbCorpGwAPI extends TseGuzzle
 {
